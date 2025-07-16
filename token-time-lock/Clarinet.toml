@@ -1,0 +1,4 @@
+[project]
+name = "token-time-lock"
+description = "A Clarity smart contract to lock tokens for governance roles"
+authors = ["Your Name <email@example.com>"]
