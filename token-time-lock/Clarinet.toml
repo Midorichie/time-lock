@@ -1,4 +1,57 @@
 [project]
 name = "token-time-lock"
-description = "A Clarity smart contract to lock tokens for governance roles"
-authors = ["Your Name <email@example.com>"]
+version = "2.0.0"
+description = "Enhanced token time-locking system with security features and token factory"
+authors = ["midorichie <midorichie@example.com>"]
+license = "MIT"
+keywords = ["stacks", "clarity", "time-lock", "tokens", "defi"]
+
+[contracts.token-time-lock]
+path = "contracts/token-time-lock.clar"
+clarity_version = 2
+epoch = "2.1"
+
+[contracts.token-factory]
+path = "contracts/token-factory.clar"
+clarity_version = 2
+epoch = "2.1"
+
+[project.requirements]
+stacks_node_version = "2.1.0.0.0"
+
+[repl]
+costs_version = 2
+parser_version = 2
+
+[repl.analysis]
+passes = ["check_checker"]
+
+[project.cache_location]
+path = ".cache"
+
+# Development network settings
+[networks.devnet]
+stacks_node_rpc_address = "http://localhost:20443"
+stacks_node_p2p_address = "http://localhost:20444"
+bitcoin_node_rpc_address = "http://localhost:18443"
+bitcoin_node_p2p_address = "http://localhost:18444"
+
+# Testnet settings
+[networks.testnet]
+stacks_node_rpc_address = "https://stacks-node-api.testnet.stacks.co"
+bitcoin_node_rpc_address = "https://blockstream.info/testnet/api"
+
+# Mainnet settings
+[networks.mainnet]
+stacks_node_rpc_address = "https://stacks-node-api.mainnet.stacks.co"
+bitcoin_node_rpc_address = "https://blockstream.info/api"
+
+# Testing configuration
+[project.testing]
+coverage_enabled = true
+test_timeout = 30
+
+# Deployment configuration
+[project.deployment]
+network = "devnet"
+deployment_fee_rate = 1
